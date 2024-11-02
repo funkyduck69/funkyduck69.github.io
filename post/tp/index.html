@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+
+<title>Patricio Rougier | </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="apple-touch-icon" sizes="180x180" href='/favicon/apple-touch-icon.png'>
+    <link rel="icon" type="image/png" sizes="32x32" href='/favicon/favicon-32x32.png'>
+    <link rel="icon" type="image/png" sizes="16x16" href='/favicon/favicon-16x16.png'>
+    <link rel="manifest" href='/favicon/site.webmanifest' />
+    <link rel="mask-icon" href=' /favicon/safari-pinned-tab.svg' color="#5bbad5" />
+    <link rel="shortcut icon" href='/favicon/favicon.ico' />
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="Patricio Rougier | " />
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.min.92245c3bd27417eb98c54b8447892fefe1c95449620cd8cb92b17d11b1313a9e.css" />
+    
+    <link href=' /css/blonde.min.css' rel="stylesheet" type="text/css" media="print"
+        onload="this.media=' all'">
+    
+
+
+
+<meta name="description" content="::: titlepage
+:::
+Análisis de Mallas y de Nodos
+Preguntas Teóricas
+1. ¿En qué consiste el análisis de mallas? ¿Cuál es el principio que se
+aplica en este método? Respuesta: Consiste en aplicar la Ley de
+Kirchhoff de las Tensiones (LKT) para escribir ecuaciones en función de
+las corrientes en cada malla.
+2. ¿Cuál es la diferencia entre el análisis de nodos y el análisis de
+mallas? Respuesta: El análisis de nodos aplica la Ley de Kirchhoff
+de las Corrientes (LKC) en cada nodo, mientras que el de mallas utiliza
+la LKT en cada lazo o malla.">
+<meta property="og:site_name" content="Patricio Rougier">
+<meta property="og:description" content="::: titlepage
+:::
+Análisis de Mallas y de Nodos
+Preguntas Teóricas
+1. ¿En qué consiste el análisis de mallas? ¿Cuál es el principio que se
+aplica en este método? Respuesta: Consiste en aplicar la Ley de
+Kirchhoff de las Tensiones (LKT) para escribir ecuaciones en función de
+las corrientes en cada malla.
+2. ¿Cuál es la diferencia entre el análisis de nodos y el análisis de
+mallas? Respuesta: El análisis de nodos aplica la Ley de Kirchhoff
+de las Corrientes (LKC) en cada nodo, mientras que el de mallas utiliza
+la LKT en cada lazo o malla.">
+<meta property="og:url" content="https://patriciorougier.github.io/post/tp/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="">
+
+<link rel="canonical" href="https://patriciorougier.github.io/post/tp/">
+
+<meta name="twitter:description" content="::: titlepage
+:::
+Análisis de Mallas y de Nodos
+Preguntas Teóricas
+1. ¿En qué consiste el análisis de mallas? ¿Cuál es el principio que se
+aplica en este método? Respuesta: Consiste en aplicar la Ley de
+Kirchhoff de las Tensiones (LKT) para escribir ecuaciones en función de
+las corrientes en cada malla.
+2. ¿Cuál es la diferencia entre el análisis de nodos y el análisis de
+mallas? Respuesta: El análisis de nodos aplica la Ley de Kirchhoff
+de las Corrientes (LKC) en cada nodo, mientras que el de mallas utiliza
+la LKT en cada lazo o malla.">
+<meta property="article:published_time" content="">
+
+
+
+
+
+<meta property="og:image" content="https://patriciorougier.github.io/">
+<meta property="og:image:url" content="https://patriciorougier.github.io/">
+
+    
+    <link rel="stylesheet" href='/css/custom.css'>
+    <i class="dark hidden"></i>
+</head>
+<body class="font-sans">
+    <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-warmgray-800"><div class="bg-gray-800">
+    <div class="container max-w-screen-xl mr-auto ml-auto">
+        <nav class="flex items-center justify-between flex-wrap bg-gray-800 p-6">
+            <div class="flex items-center flex-no-shrink bg-gray-800 text-white mr-6">
+                <a href="https://patriciorougier.github.io/"><span class="font-semibold text-2xl tracking-tight">Patricio Rougier</span></a>
+            </div>
+            <div class="flex md:hidden">
+                <div class="py-2">
+                    <button onclick="toggleDarkMode()" class="focus:outline-none mr-1" aria-label="Darkmode Toggle Button"><i id="icon"
+                            class="icon-moon inline-flex align-middle leading-normal text-lg text-white"></i></button>
+                    <span class="text-white">|</span>
+                </div>
+                <button id="hamburgerbtn" class="flex items-center px-3 py-1 text-white hover:opacity-50" aria-label="Hamburger Button">
+                    <span class="icon-menu text-2xl"></span>
+                </button>
+            </div>
+            <div class="hidden w-full md:flex md:flex-row sm:items-center md:w-auto" id="mobileMenu">
+                <div class="text-sm lg:flex-grow">
+                </div>
+                <div class="navmenu">
+                    
+                    <a href="/"
+                        class="no-underline duration-200 block mt-4 sm:inline-block sm:mt-0 text-white hover:opacity-50 mr-4">
+                        Home
+                    </a>
+                    
+                </div>
+                <div class="text-white invisible md:visible">
+                    <span>|</span>
+                    <button onclick="toggleDarkMode()" class="focus-visible:outline-none" aria-label="Darkmode Toggle Button"><i id="icon2"
+                            class="icon-moon hover:opacity-50 duration-200 inline-flex align-middle leading-normal text-lg ml-2"></i></button>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<style>
+    .active {
+        display: block;
+    }
+</style>
+
+<script>
+    let hamburger = document.getElementById('hamburgerbtn');
+
+    let mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', function () {
+        mobileMenu.classList.toggle('active');
+    });
+</script>
+<div class="container max-w-screen-xl mx-auto mt-4 flex-grow px-5 lg:px-0" id="content">
+            <div class="lg:mx-5">
+<div class="grid grid-cols-3 gap-4">
+  
+  <div class="col-span-3 lg:col-span-2 dark:text-white">
+    
+      <div class="bg-white dark:bg-warmgray-900 p-5 my-4">
+        <h1 class="mb-2 text-4xl font-bold"></h1>
+        <aside id="meta">
+          <div>
+            <section>
+              <h4 id="date"><span class="icon-access_time mr-2"></span>0001/01/01
+              </h4>
+            </section>
+            
+          </div>
+        </aside>
+        
+        
+        <div class="prose md:prose-lg lg:prose-xl max-w-none dark:prose-invert mt-5"><p>::: titlepage
+:::</p>
+<h1 id="análisis-de-mallas-y-de-nodos" class="unnumbered">Análisis de Mallas y de Nodos</h1>
+<h2 id="preguntas-teóricas" class="unnumbered">Preguntas Teóricas</h2>
+<p>1. ¿En qué consiste el análisis de mallas? ¿Cuál es el principio que se
+aplica en este método? <strong>Respuesta:</strong> Consiste en aplicar la Ley de
+Kirchhoff de las Tensiones (LKT) para escribir ecuaciones en función de
+las corrientes en cada malla.</p>
+<p>2. ¿Cuál es la diferencia entre el análisis de nodos y el análisis de
+mallas? <strong>Respuesta:</strong> El análisis de nodos aplica la Ley de Kirchhoff
+de las Corrientes (LKC) en cada nodo, mientras que el de mallas utiliza
+la LKT en cada lazo o malla.</p>
+<p>3. ¿Cómo se aplica la Ley de Kirchhoff de las Corrientes (LKC) en el
+análisis de nodos? <strong>Respuesta:</strong> La suma de las corrientes que entran
+en un nodo es igual a la suma de las corrientes que salen de ese nodo.</p>
+<p>4. ¿Cómo se aplica la Ley de Kirchhoff de las Tensiones (LKT) en el
+análisis de mallas? <strong>Respuesta:</strong> La suma de las caídas de tensión en
+una malla cerrada es igual a la suma de las fuentes de voltaje en esa
+malla.</p>
+<p>5. ¿En qué situaciones es más conveniente usar el análisis de nodos en
+lugar del análisis de mallas? <strong>Respuesta:</strong> Es más conveniente en
+circuitos con muchas resistencias conectadas en paralelo.</p>
+<p>6. ¿Cómo se resuelven sistemas de ecuaciones lineales en análisis de
+circuitos usando el método de los determinantes (regla de Cramer)?
+<strong>Respuesta:</strong> Se escriben las ecuaciones en forma matricial y se
+resuelve utilizando determinantes para hallar las corrientes o tensiones
+desconocidas.</p>
+<hr>
+<h2 id="ejercicio-1-análisis-de-nodos" class="unnumbered">Ejercicio 1: Análisis de Nodos</h2>
+<p>Dado el siguiente circuito con tres resistencias $R_1 = 10 \Omega$,
+$R_2 = 20 \Omega$, $R_3 = 30 \Omega$ y una fuente de voltaje $V = 10 V$,
+realiza el análisis de nodos para calcular las corrientes en cada
+resistencia.</p>
+<p><strong>Respuesta:</strong> $I_1 = 0.5 A$, $I_2 = 0.25 A$, $I_3 = 0.167 A$</p>
+<hr>
+<h2 id="ejercicio-2-análisis-de-mallas" class="unnumbered">Ejercicio 2: Análisis de Mallas</h2>
+<p>En el siguiente circuito con dos mallas, calcula las corrientes de malla
+$I_1$ e $I_2$. Los valores de los resistores son $R_1 = 5 \Omega$,
+$R_2 = 10 \Omega$, $R_3 = 15 \Omega$, y las fuentes de voltaje son
+$V_1 = 10 V$ y $V_2 = 20 V$.</p>
+<p><strong>Respuesta:</strong> $I_1 = 1 A$, $I_2 = 0.5 A$</p>
+<hr>
+<h2 id="ejercicio-3-método-de-los-determinantes-regla-de-cramer" class="unnumbered">Ejercicio 3: Método de los Determinantes (Regla de Cramer)</h2>
+<p>Resuelve el siguiente sistema de ecuaciones de un circuito mediante la
+regla de Cramer. Los valores de las resistencias y fuentes de voltaje
+son: $$\begin{aligned}
+10 I_1 + 5 (I_1 - I_2) &amp;= 12 V \
+5 (I_2 - I_1) + 15 I_2 &amp;= 6 V
+\end{aligned}$$</p>
+<p><strong>Respuesta:</strong> $I_1 = 1 A$, $I_2 = 0.2 A$</p>
+<hr>
+<h2 id="ejercicio-4-análisis-de-mallas-con-resistencias-en-serie-y-paralelo" class="unnumbered">Ejercicio 4: Análisis de Mallas con Resistencias en Serie y Paralelo</h2>
+<p>Dado el siguiente circuito, realiza el análisis de mallas para calcular
+las corrientes $I_1$, $I_2$ e $I_3$. Las resistencias son
+$R_1 = 5 \Omega$, $R_2 = 10 \Omega$, $R_3 = 20 \Omega$ y las fuentes de
+voltaje son $V_1 = 15 V$ y $V_2 = 25 V$.</p>
+<p><strong>Respuesta:</strong> $I_1 = 1.5 A$, $I_2 = 0.75 A$, $I_3 = 0.375 A$</p>
+<hr>
+<h2 id="ejercicio-5" class="unnumbered">Ejercicio 5</h2>
+<p>Dado el siguiente circuito con dos mallas (Malla 1 y Malla 2) y las
+siguientes resistencias y fuentes de voltaje: - Malla 1:
+$R_1 = 10 , \Omega$, $R_2 = 5 , \Omega$, $V_1 = 12 , V$ - Malla 2:
+$R_2 = 5 , \Omega$, $R_3 = 15 , \Omega$, $V_2 = 6 , V$</p>
+<p>Calcula las corrientes $I_1$ y $I_2$ en las mallas.</p>
+<h2 id="ejercicio-6" class="unnumbered">Ejercicio 6</h2>
+<p>Un circuito tiene tres mallas (Malla A, Malla B y Malla C) y las
+siguientes resistencias y fuentes de voltaje: - Malla A:
+$R_1 = 4 , \Omega$, $R_2 = 8 , \Omega$, $V_1 = 10 , V$ - Malla B:
+$R_2 = 8 , \Omega$, $R_3 = 6 , \Omega$, $V_2 = 5 , V$ - Malla C:
+$R_3 = 6 , \Omega$, $R_4 = 12 , \Omega$, $V_3 = 15 , V$</p>
+<p>Determina las corrientes $I_A$, $I_B$ y $I_C$.</p>
+<h2 id="ejercicio-7" class="unnumbered">Ejercicio 7</h2>
+<p>En un circuito con dos mallas, se tienen las siguientes resistencias y
+fuentes de voltaje: - Malla 1: $R_1 = 3 , \Omega$, $R_2 = 2 , \Omega$,
+$V_1 = 9 , V$ - Malla 2: $R_2 = 2 , \Omega$, $R_3 = 4 , \Omega$,
+$V_2 = 6 , V$</p>
+<p>Encuentra las corrientes $I_1$ y $I_2$.</p>
+<h2 id="ejercicio-8" class="unnumbered">Ejercicio 8</h2>
+<p>Considera un circuito que contiene dos mallas con las siguientes
+características: - Malla 1: $R_1 = 5 , \Omega$, $R_2 = 10 , \Omega$,
+$V_1 = 20 , V$ - Malla 2: $R_2 = 10 , \Omega$, $R_3 = 15 , \Omega$,
+$V_2 = 10 , V$</p>
+<p>Calcula las corrientes $I_1$ y $I_2$.</p>
+<h2 id="ejercicio-9" class="unnumbered">Ejercicio 9</h2>
+<p>Un circuito tiene tres mallas y las siguientes resistencias y fuentes de
+voltaje: - Malla 1: $R_1 = 1 , \Omega$, $R_2 = 3 , \Omega$,
+$V_1 = 5 , V$ - Malla 2: $R_2 = 3 , \Omega$, $R_3 = 2 , \Omega$,
+$V_2 = 7 , V$ - Malla 3: $R_3 = 2 , \Omega$, $R_4 = 6 , \Omega$,
+$V_3 = 12 , V$</p>
+<p>Determina las corrientes $I_1$, $I_2$ y $I_3$.</p>
+<h2 id="respuestas" class="unnumbered">Respuestas</h2>
+<ul>
+<li>
+<p><strong>Ejercicio 5:</strong> $I_1 = 1.2 , A$, $I_2 = 0.8 , A$.</p>
+</li>
+<li>
+<p><strong>Ejercicio 6:</strong> $I_A = 1.5 , A$, $I_B = 0.5 , A$,
+$I_C = 0.25 , A$.</p>
+</li>
+<li>
+<p><strong>Ejercicio 7:</strong> $I_1 = 2.25 , A$, $I_2 = 1.5 , A$.</p>
+</li>
+<li>
+<p><strong>Ejercicio 8:</strong> $I_1 = 1.5 , A$, $I_2 = 0.5 , A$.</p>
+</li>
+<li>
+<p><strong>Ejercicio 9:</strong> $I_1 = 2 , A$, $I_2 = 1 , A$, $I_3 = 3 , A$.</p>
+</li>
+</ul>
+<h2 id="ejercicio-5-preguntas-teóricas-y-conceptuales" class="unnumbered">Ejercicio 5: Preguntas Teóricas y Conceptuales</h2>
+<p>1. ¿Cómo afecta la presencia de una resistencia en paralelo a las
+corrientes de malla? ¿Y a las corrientes de nodo? <strong>Respuesta:</strong> La
+resistencia en paralelo disminuye la resistencia total de la malla y
+afecta las corrientes distribuyéndolas en ambas ramas.</p>
+<p>2. ¿Qué ventaja tiene el análisis de mallas en circuitos con múltiples
+fuentes de tensión? <strong>Respuesta:</strong> Es más fácil de aplicar ya que la LKT
+permite tomar en cuenta múltiples fuentes de tensión directamente.</p>
+<p>3. ¿Qué tipo de circuitos son más fáciles de resolver con el análisis
+de nodos en lugar del de mallas? <strong>Respuesta:</strong> Los circuitos con muchas
+ramas conectadas en paralelo, ya que la LKC es más simple de aplicar.</p>
+<p>4. ¿Cuándo se puede aplicar directamente la regla de Cramer en el
+análisis de circuitos? <strong>Respuesta:</strong> Se aplica cuando las ecuaciones
+del circuito se expresan en forma matricial y se pueden resolver
+mediante determinantes.</p>
+<h1 id="análisis-de-nodos" class="unnumbered">Análisis de Nodos</h1>
+<h2 id="preguntas-teóricas-1" class="unnumbered">Preguntas Teóricas</h2>
+<p>1. ¿Qué es el análisis de nodos? ¿En qué consiste este método?
+<strong>Respuesta:</strong> Es un método basado en la Ley de Kirchhoff de las
+Corrientes (LKC), donde se establecen ecuaciones para cada nodo no
+conectado a una fuente de tensión, describiendo la corriente entrante y
+saliente.</p>
+<p>2. ¿Cuál es la diferencia principal entre el análisis de nodos y el
+análisis de mallas? <strong>Respuesta:</strong> El análisis de nodos utiliza la LKC
+para determinar tensiones en los nodos, mientras que el análisis de
+mallas emplea la LKT para determinar corrientes en las mallas.</p>
+<p>3. ¿Cómo se elige el nodo de referencia en el análisis de nodos?
+<strong>Respuesta:</strong> El nodo de referencia (o tierra) se elige como un nodo
+común al resto del circuito, usualmente el que tiene más conexiones.</p>
+<p>4. ¿Por qué es importante conocer las tensiones de los nodos en un
+circuito? <strong>Respuesta:</strong> Porque permiten determinar todas las corrientes
+del circuito, dado que las corrientes en las ramas dependen de la
+diferencia de potencial entre los nodos.</p>
+<p>5. ¿En qué casos es más conveniente utilizar el análisis de nodos en
+lugar del análisis de mallas? <strong>Respuesta:</strong> En circuitos con muchas
+ramas en paralelo, o cuando hay varias fuentes de corriente.</p>
+<p>6. ¿Cómo se resuelve un sistema de ecuaciones derivado del análisis de
+nodos utilizando la regla de Cramer? <strong>Respuesta:</strong> El sistema de
+ecuaciones se expresa en forma matricial, y se resuelve mediante el
+cálculo de determinantes para obtener las tensiones en los nodos.</p>
+<hr>
+<h2 id="ejercicio-1-análisis-de-nodos-en-un-circuito-simple" class="unnumbered">Ejercicio 1: Análisis de Nodos en un Circuito Simple</h2>
+<p>Dado el siguiente circuito con tres resistencias $R_1 = 4 \Omega$,
+$R_2 = 6 \Omega$, $R_3 = 12 \Omega$ y una fuente de corriente $I = 2 A$,
+realiza el análisis de nodos para calcular las tensiones $V_1$ y $V_2$.</p>
+<p><strong>Respuesta:</strong> $V_1 = 8 V$, $V_2 = 4 V$</p>
+<hr>
+<h2 id="ejercicio-2-análisis-de-nodos-con-múltiples-fuentes-de-corriente" class="unnumbered">Ejercicio 2: Análisis de Nodos con Múltiples Fuentes de Corriente</h2>
+<p>En el siguiente circuito, determina las tensiones en los nodos $V_1$,
+$V_2$ y $V_3$. Las resistencias son $R_1 = 2 \Omega$, $R_2 = 5 \Omega$,
+$R_3 = 10 \Omega$ y las fuentes de corriente son $I_1 = 3 A$ y
+$I_2 = 1 A$.</p>
+<p><strong>Respuesta:</strong> $V_1 = 6 V$, $V_2 = 3 V$, $V_3 = 1.5 V$</p>
+<hr>
+<h2 id="ejercicio-3-análisis-de-nodos-con-fuente-de-voltaje-dependiente" class="unnumbered">Ejercicio 3: Análisis de Nodos con Fuente de Voltaje Dependiente</h2>
+<p>Considera el siguiente circuito donde $V_3 = 2 V_1$ y se te dan las
+resistencias $R_1 = 5 \Omega$, $R_2 = 10 \Omega$, $R_3 = 20 \Omega$ y
+una fuente de corriente de $I = 1 A$. Calcula las tensiones $V_1$ y
+$V_2$ aplicando el análisis de nodos.</p>
+<p><strong>Respuesta:</strong> $V_1 = 5 V$, $V_2 = 10 V$</p>
+<hr>
+<h2 id="ejercicio-4-análisis-de-nodos-con-resistencias-en-serie-y-paralelo" class="unnumbered">Ejercicio 4: Análisis de Nodos con Resistencias en Serie y Paralelo</h2>
+<p>Dado el siguiente circuito con resistencias $R_1 = 3 \Omega$,
+$R_2 = 6 \Omega$, $R_3 = 9 \Omega$, y una fuente de corriente de
+$I = 2 A$, realiza el análisis de nodos para encontrar las tensiones
+$V_1$ y $V_2$.</p>
+<p><strong>Respuesta:</strong> $V_1 = 6 V$, $V_2 = 3 V$</p>
+<hr>
+<h2 id="ejercicio-5-método-de-los-determinantes-regla-de-cramer-en-análisis-de-nodos" class="unnumbered">Ejercicio 5: Método de los Determinantes (Regla de Cramer) en Análisis de Nodos</h2>
+<p>Resuelve el siguiente sistema de ecuaciones mediante la regla de Cramer.
+Las ecuaciones resultantes del análisis de nodos son: $$\begin{aligned}
+2V_1 - V_2 &amp;= 10 \
+-V_1 + 3V_2 &amp;= 5
+\end{aligned}$$ Calcula $V_1$ y $V_2$ usando determinantes.</p>
+<p><strong>Respuesta:</strong> $V_1 = 5 V$, $V_2 = 3 V$</p>
+<hr>
+<h2 id="ejercicio-6-1" class="unnumbered">Ejercicio 6</h2>
+<p>Dado el siguiente circuito con tres nodos (A, B, C) y resistencias y
+fuentes de corriente, aplica el análisis de nodos para encontrar las
+corrientes $I_1$, $I_2$ y $I_3$.</p>
+<ul>
+<li>
+<p>$I_1$ entra al nodo A.</p>
+</li>
+<li>
+<p>$I_2$ sale de A hacia B.</p>
+</li>
+<li>
+<p>$I_3$ sale de A hacia C.</p>
+</li>
+<li>
+<p>$I_4$ es una fuente de corriente de 3 A que entra en el nodo B.</p>
+</li>
+<li>
+<p>Resistencias: $R_1 = 10 , \Omega$, $R_2 = 5 , \Omega$,
+$R_3 = 15 , \Omega$.</p>
+</li>
+</ul>
+<h2 id="ejercicio-7-1" class="unnumbered">Ejercicio 7</h2>
+<p>Un circuito tiene dos nodos, A y B. En el nodo A, entran $I_1 = 4 , A$
+y $I_2 = 2 , A$, y sale $I_3$ hacia el nodo B. En el nodo B, entra
+$I_3$ y sale $I_4 = 5 , A$. Encuentra la corriente $I_3$.</p>
+<h2 id="ejercicio-8-1" class="unnumbered">Ejercicio 8</h2>
+<p>En un circuito de tres nodos, se tienen las siguientes corrientes: -
+$I_1 = 10 , A$ que entra al nodo A. - $I_2 = 3 , A$ que sale del nodo
+A hacia el nodo B. - $I_3$ sale del nodo A hacia el nodo C. - En el nodo
+B, entra $I_2$ y sale $I_4 = 4 , A$ hacia el nodo C. Encuentra la
+corriente $I_3$.</p>
+<h2 id="ejercicio-9-1" class="unnumbered">Ejercicio 9</h2>
+<p>En un circuito con un nodo A, entran las corrientes $I_1 = 5 , A$ y
+$I_2 = 2 , A$ y salen $I_3$ y $I_4 = 6 , A$. Determina la corriente
+$I_3$.</p>
+<h2 id="ejercicio-10" class="unnumbered">Ejercicio 10</h2>
+<p>Considera un circuito con tres nodos y las siguientes corrientes: - En
+el nodo A: $I_1 = 12 , A$ (entra), $I_2$ (sale hacia el nodo B), y
+$I_3$ (sale hacia el nodo C). - En el nodo B: $I_2$ (entra) y
+$I_4 = 3 , A$ (sale hacia el nodo C). - En el nodo C: $I_3$ (entra) y
+$I_5 = 5 , A$ (sale). Encuentra las corrientes $I_2$ y $I_3$.</p>
+<h2 id="respuestas-1" class="unnumbered">Respuestas</h2>
+<ul>
+<li>
+<p><strong>Ejercicio 6:</strong> $I_1 = 5 , A$, $I_2 = 3 , A$, $I_3 = 2 , A$.</p>
+</li>
+<li>
+<p><strong>Ejercicio 7:</strong> $I_3 = 6 , A$.</p>
+</li>
+<li>
+<p><strong>Ejercicio 8:</strong> $I_3 = 7 , A$.</p>
+</li>
+<li>
+<p><strong>Ejercicio 9:</strong> $I_3 = 1 , A$.</p>
+</li>
+<li>
+<p><strong>Ejercicio 10:</strong> $I_2 = 9 , A$, $I_3 = 7 , A$.</p>
+</li>
+</ul>
+<h2 id="ejercicio-11-preguntas-conceptuales" class="unnumbered">Ejercicio 11: Preguntas Conceptuales</h2>
+<p>1. ¿Qué ocurre con la corriente en una rama si la resistencia es muy
+alta? <strong>Respuesta:</strong> La corriente disminuye considerablemente debido a
+la alta resistencia.</p>
+<p>2. Si se añade una fuente de corriente en un nodo, ¿cómo afecta esto a
+las ecuaciones de análisis de nodos? <strong>Respuesta:</strong> Se añade
+directamente a la suma de corrientes de ese nodo.</p>
+<p>3. ¿Cómo afecta la presencia de una fuente de voltaje entre dos nodos
+al análisis de nodos? <strong>Respuesta:</strong> Fija la diferencia de potencial
+entre esos nodos, lo que permite sustituir directamente en las
+ecuaciones.</p>
+<p>4. ¿Qué ocurre si el nodo de referencia se elige en un punto diferente?
+¿Cambia el análisis? <strong>Respuesta:</strong> Las tensiones de los nodos cambiarán
+de valor, pero las diferencias de potencial seguirán siendo las mismas.</p>
+<p>5. ¿Cuáles son las ventajas de usar el análisis de nodos en circuitos
+con múltiples fuentes de corriente? <strong>Respuesta:</strong> Facilita la
+resolución ya que las fuentes de corriente pueden aplicarse directamente
+en las ecuaciones de nodo.</p>
+</div>
+        
+        <aside id="meta">
+          
+        </aside>
+      </div>
+      <div class="bg-white dark:bg-warmgray-900 p-5 my-4">
+        <div class="grid grid-cols-2">
+          <div class="col-span-1">
+            
+          </div>
+          
+        </div>
+      </div>
+      <div class="bg-white dark:bg-warmgray-900 p-5 my-4">
+        <div class="mb-3">
+          
+        </div>
+      </div>
+    </div>
+    
+    <div class="hidden lg:block lg:col-span-1">
+    
+    
+            
+            
+
+<div class="bg-white panel mb-3 pb-5 dark:bg-warmgray-900">
+    <p class="text-xl text-center text-gray-700 py-5 dark:text-gray-300 font-bold">Recent Posts</p>
+    <div class="mx-6">
+        <a href="/post/tp/" class="">
+            <div
+                class="w-full block mt-3 bg-white hover:bg-gray-100 duration-200 dark:bg-warmgray-900 dark:text-gray-200 dark:hover:bg-warmgray-800">
+                <div class="px-2">
+                    <div class="text-gray-900 font-bold text-xl dark:text-white"></div>
+                    <p class="text-sm text-gray-600 flex items-center pb-1 dark:text-gray-400">
+                        <time><span class="icon-access_time mr-1"></span>0001/01/01</time>
+                    </p>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+        
+            
+            <div class="bg-white panel mb-3 pb-5 dark:bg-warmgray-900">
+    <p class="text-xl text-center text-gray-700 py-3 px-3 dark:text-gray-300 font-bold">Archives</p>
+    
+    
+    
+</div>
+        
+            
+            
+        
+            
+            
+
+        
+            
+            <div class="mb-3">
+    <form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+        <label>
+            <input class="w-full p-3 focus:outline-none dark:bg-warmgray-900 dark:text-white placeholder-gray-700 dark:placeholder-gray-300" type="search"
+                placeholder="Search..." value="" name="q" aria-label="Search">
+        </label>
+        <input class="hidden" type="submit" value="Search">
+        <input type="hidden" name="sitesearch" value="https://patriciorougier.github.io/" />
+    </form>
+</div>
+        
+    
+</div>
+    
+  </div>
+</div>
+
+            </div>
+        </div><footer class="bg-gray-800 text-white p-6">
+  
+  <div class="container max-w-screen-xl mr-auto ml-auto">
+    <p>&copy; 2024 <a href="https://patriciorougier.github.io/" class="duration-200 hover:opacity-50">Patricio Rougier</a>
+    </p>
+    <p>Powered by <a href="https://gohugo.io/" class="duration-200 hover:opacity-50">Hugo</a>, Theme <a
+        href="https://github.com/opera7133/Blonde" class="duration-200 hover:opacity-50">Blonde</a>.</p>
+  </div>
+  
+  <script>
+    var icon = document.getElementById("icon");
+    var icon2 = document.getElementById("icon2");
+    
+    if (document.documentElement.classList.contains("dark") || localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      icon.classList.remove("icon-moon");
+      icon.classList.add("icon-sun");
+      icon2.classList.remove("icon-moon");
+      icon2.classList.add("icon-sun");
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    function toggleDarkMode() {
+      if (document.documentElement.classList.contains('dark')) {
+        icon.classList.remove("icon-sun");
+        icon.classList.add("icon-moon");
+        icon2.classList.remove("icon-sun");
+        icon2.classList.add("icon-moon");
+        document.documentElement.classList.remove('dark')
+        localStorage.theme = 'light'
+      } else {
+        icon.classList.remove("icon-moon");
+        icon.classList.add("icon-sun");
+        icon2.classList.remove("icon-moon");
+        icon2.classList.add("icon-sun");
+        document.documentElement.classList.add('dark')
+        localStorage.theme = 'dark'
+      }
+    }
+  </script>
+</footer></div>
+</body>
+
+</html>
